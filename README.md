@@ -5,6 +5,22 @@
 
 ---
 
+## 組別資訊 
+
+- 組別號碼：第 9 組
+- 系級班級：資工 1B
+
+---
+
+## 組員資訊 
+
+| 姓名 | 負責項目 |
+|------|----------|
+| 范裴太愴 | UML設計、Main、Class World、程式整合、簡報(PPT) 、UML、README.md|
+| 馮家輝 | Class Entity、Class Animal、Class Wolf、Class Rabbit、Class Plant、Utility、README.md |
+
+---
+
 ## 📋 目錄
 
 - [概述](#概述)
