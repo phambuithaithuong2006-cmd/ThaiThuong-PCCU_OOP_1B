@@ -244,7 +244,7 @@ Current grass population:20
 
 | 互動前 | 互動後 |
 |-------------------|-------------------|
-| <img width="559" height="1052" alt="Screenshot 2026-06-03 011011" src="https://github.com/user-attachments/assets/8f193e05-d565-4752-a1e1-69f50049a7d1" />| <img width="576" height="1041" alt="Screenshot 2026-06-03 011016" src="https://github.com/user-attachments/assets/6c6dba56-f390-4b03-8979-229ac5aa4f39" />|
+|<img width="559" height="1052" alt="Screenshot 2026-06-03 011011" src="https://github.com/user-attachments/assets/8c02a9f8-c709-456a-81c0-5241170853f6" />| <img width="576" height="1041" alt="Screenshot 2026-06-03 011016" src="https://github.com/user-attachments/assets/1272de2a-23dd-4bd3-905f-a0dcc080db79" />|
 
 ### 圖例說明
 
@@ -282,7 +282,7 @@ Current grass population:20
 
 | 互動前 | 互動後 |
 |-------------------|-------------------|
-| <img width="576" height="1121" alt="Screenshot 2026-06-03 011037" src="https://github.com/user-attachments/assets/9b7dd24a-0604-4990-914b-95ce5b23169b" />|<img width="574" height="1049" alt="Screenshot 2026-06-03 011042" src="https://github.com/user-attachments/assets/e1bfdc8f-6508-47e9-b88a-4ecc3b4b199a" />|
+| <img width="576" height="1121" alt="Screenshot 2026-06-03 011037" src="https://github.com/user-attachments/assets/148f56f6-ff15-4380-81a0-a7908612e184" />|<img width="574" height="1049" alt="Screenshot 2026-06-03 011042" src="https://github.com/user-attachments/assets/7a81653c-09b9-446a-903a-edce27b50426" />|
 
 ### 觀察結果
 
