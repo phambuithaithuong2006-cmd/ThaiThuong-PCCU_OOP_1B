@@ -234,6 +234,33 @@ Current grass population:20
 |--------|--------|
 | <img width="573" height="750" alt="Screenshot 2026-06-03 010943" src="https://github.com/user-attachments/assets/2b6fc089-23c9-4a83-bd83-12a04026cb05" />| <img width="565" height="749" alt="Screenshot 2026-06-03 010956" src="https://github.com/user-attachments/assets/39087ec3-43fe-4666-82c0-5de23f0149c8" />|
 
+## 🌱 植物生長與擴散展示
+
+下圖展示植物（G）在模擬過程中的生長與擴散行為。
+
+在第 2 回合時，地圖上的植物數量為 **9 株**；經過一回合更新後，部分植物成功向周圍空格擴散，使第 3 回合的植物數量增加至 **18 株**。
+
+此結果顯示植物會隨時間持續成長，並逐漸佔據更多可用空間，為兔子提供穩定的食物來源，進而影響整個生態系統的族群變化。
+
+| 互動前 | 互動後 |
+|-------------------|-------------------|
+| <img width="559" height="1052" alt="Screenshot 2026-06-03 011011" src="https://github.com/user-attachments/assets/8f193e05-d565-4752-a1e1-69f50049a7d1" />| <img width="576" height="1041" alt="Screenshot 2026-06-03 011016" src="https://github.com/user-attachments/assets/6c6dba56-f390-4b03-8979-229ac5aa4f39" />|
+
+### 圖例說明
+
+| 符號 | 代表 |
+|------|------|
+| `G` | Plant（植物） |
+| `R` | Rabbit（兔子） |
+| `W` | Wolf（狼） |
+| `.` | Empty Cell（空格） |
+
+**觀察結果：**
+- Plant Population：9 → 18
+- Rabbit Population：6 → 6
+- Wolf Population：10 → 10
+- 植物數量明顯增加，展示了系統中的植物擴散機制（Plant Spread Mechanism）。
+
 ### 圖例說明
 
 | 符號 | 代表 |
@@ -244,6 +271,28 @@ Current grass population:20
 | `.` | 空格 Empty |
 
 此互動展示了系統中的捕食邏輯：狼會尋找附近的兔子，並在移動後進行獵食；兔子若被狼捕食，會從地圖中移除，同時狼會獲得能量。
+
+## 🐰 兔子進食與繁殖展示
+
+下圖展示兔子（R）透過進食植物獲得能量後進行繁殖的過程。
+
+在第 4 回合時，兔子數量為 **6 隻**，植物數量為 **16 株**，系統顯示 `Spawn rabbit at: 15,3`，表示有兔子成功繁殖。
+
+經過一回合更新後，第 5 回合的兔子數量增加至 **7 隻**，而植物數量下降至 **14 株**。這代表兔子透過啃食植物獲得能量，並在能量達到門檻後產生新的兔子。
+
+| 互動前 | 互動後 |
+|-------------------|-------------------|
+| <img width="576" height="1121" alt="Screenshot 2026-06-03 011037" src="https://github.com/user-attachments/assets/9b7dd24a-0604-4990-914b-95ce5b23169b" />|<img width="574" height="1049" alt="Screenshot 2026-06-03 011042" src="https://github.com/user-attachments/assets/e1bfdc8f-6508-47e9-b88a-4ecc3b4b199a" />|
+
+### 觀察結果
+
+| 項目 | 互動前 | 互動後 | 變化 |
+|------|----------|----------|------|
+| Wolf Population | 10 | 10 | 不變 |
+| Rabbit Population | 6 | 7 | +1 |
+| Grass Population | 16 | 14 | -2 |
+
+此結果展示了系統中的 **Rabbit Reproduction Mechanism（兔子繁殖機制）**，也說明植物作為兔子食物來源，會影響兔子的生存與繁殖。
 
 ## 展示的物件導向概念
 
