@@ -224,7 +224,7 @@ Current grass population:20
 | `W` | 狼 |
 | `R` | 兔子 |
 | `G` | 草／植物 |
-| `.` | 空格 |![Uploading Screenshot 2026-06-03 010943.png…]()
+| `.` | 空格 |<img width="573" height="750" alt="Screenshot 2026-06-03 010943" src="https://github.com/user-attachments/assets/2b6baa14-7e2c-4175-84db-b2db9cc7b668" />
 ### 狼與兔子的互動過程
 
 下圖展示狼（W）與兔子（R）在地圖中的互動情況。  
@@ -232,7 +232,7 @@ Current grass population:20
 
 | 互動前 | 互動後 |
 |--------|--------|
-| ![Wolf and Rabbit Before](images/wolf_rabbit_before.png) | ![Wolf and Rabbit After](images/wolf_rabbit_after.png) |
+| <img width="573" height="750" alt="Screenshot 2026-06-03 010943" src="https://github.com/user-attachments/assets/2b6fc089-23c9-4a83-bd83-12a04026cb05" />| <img width="565" height="749" alt="Screenshot 2026-06-03 010956" src="https://github.com/user-attachments/assets/39087ec3-43fe-4666-82c0-5de23f0149c8" />|
 
 ### 圖例說明
 
