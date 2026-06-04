@@ -9,22 +9,8 @@
 
 - 組別號碼：第 9 組
 - 系級班級：資工 1B
+- 成員:范裴太愴 (組長), 馮家輝  
 
----
-
-## 組員資訊 
-
-| 姓名 | 負責項目 |
-|------|----------|
-| 范裴太愴 | |
-| 馮家輝 |  |
-
-## 分工資訊
-
-| 姓名 | 開發內容 | 貢獻比例 |
-|------|----------|----------|
-| 范裴太愴 |  | % |
-| 馮家輝 |  | % |
 ---
 
 ## 小專題題目
@@ -40,10 +26,8 @@
 ## 📋 目錄
 
 - [概述](#概述)
-- [功能特色](#功能特色)
 - [UML圖](#UML圖)
 - [專案結構](#專案結構)
-- [類別層次結構](#類別層次結構)
 - [運作方式](#運作方式)
 - [快速開始](#快速開始)
 - [遊玩方式](#遊玩方式)
@@ -60,22 +44,6 @@
 
 ---
 
-## 功能特色
-
-- 支援逐回合或每次推進 10 個回合的模擬方式
-- 捕食者／獵物能量系統（狼獵食兔子獲得能量，兔子啃食植物獲得能量）
-- 可設定能量門檻的繁殖機制
-- 延遲生成佇列——新生個體在*下一個*回合才行動，而非誕生當回合
-- 安全放置檢查，涵蓋所有存活實體**以及**生成佇列
-- 即時顯示狼、兔子與草的族群數量
-
----
-
-## UML圖
-<img width="2238" height="1631" alt="Brainstorming and ideation" src="https://github.com/user-attachments/assets/5dafae5f-9871-46f2-a32f-782557a587db" />
-
----
-
 ## 專案結構
 
 ```
@@ -87,7 +55,7 @@ SurvivalWorldSimulation/
 │
 ├── Entity.h / Entity.cpp         # 基礎類別 — 位置 (x, y)
 │
-├── Animal.h / Animal.cpp         # 抽象動物 — 能量、物種、虛擬行為
+├── Animal.h / Animal.cpp         # 抽象類別 — 能量、物種、虛擬行為
 │
 ├── Wolf.h / Wolf.cpp             # 捕食者 — 獵食兔子，初始能量 40，能量 ≥ 60 時繁殖
 │
@@ -95,20 +63,12 @@ SurvivalWorldSimulation/
 │
 └── Plant.h / Plant.cpp           # 食物來源 — 被動生長與蔓延
 ```
+`World` 是模擬控制器。它透過 `vector<Animal*>` 與 `vector<Plant*>`（原始指標，手動管理）擁有所有實體，並仲介所有互動——實體之間不會直接溝通。
 
 ---
 
-## 類別層次結構
-
-```
-Entity
-├── Animal  （抽象）
-│   ├── Wolf
-│   └── Rabbit
-└── Plant
-```
-
-`World` 是模擬控制器。它透過 `vector<Animal*>` 與 `vector<Plant*>`（原始指標，手動管理）擁有所有實體，並仲介所有互動——實體之間不會直接溝通。
+## UML圖
+<img width="1500" height="1100" alt="Brainstorming and ideation" src="https://github.com/user-attachments/assets/5dafae5f-9871-46f2-a32f-782557a587db" />
 
 ---
 
@@ -119,9 +79,9 @@ Entity
 每次呼叫 `update()` 皆依照以下固定順序執行：
 
 1. **狼的階段** — 每隻存活的狼依序呼叫 `move()` → `eat()` → `reproduce()`
-2. **狼的清理** — 死亡的狼（能量 ≤ 0 或被吃掉）被移除並釋放記憶體
+2. **動物清理** — 死亡的動物（能量 ≤ 0 或被吃掉）被移除並釋放記憶體
 3. **兔子的階段** — 每隻存活的兔子依序呼叫 `move()` → `eat()` → `reproduce()`
-4. **兔子的清理** — 死亡的兔子被移除並釋放記憶體
+4. **動物清理** — 死亡的動物（能量 ≤ 0 或被吃掉）被移除並釋放記憶體
 5. **清空生成佇列** — 第 1–4 步中排入佇列的所有新生動物加入存活向量
 6. **植物的階段** — 每株植物呼叫 `grow()` → `spread()`
 7. **清空植物佇列** — 新蔓延的植物加入存活向量
@@ -134,18 +94,6 @@ Entity
 | 兔子 | 尋找鄰近植物；否則隨機移動 | 移除同格的植物（+20 能量） | 需要能量 ≥ 80；消耗 40 能量 |
 | 植物 | — | — | 當 `growCounter ≥ 30` 時向相鄰格蔓延 |
 
-### 能量系統
-
-- 每次移動固定消耗 **5 能量**，不論是否成功
-- 能量 ≤ 0 的動物被標記為死亡，並在其所屬階段結束時清除
-- `beEaten(true)` 立即設置死亡旗標；實際移除延遲至清理階段（防止迭代器失效）
-
-### 延遲生成佇列
-
-`reproduce()` 產生的新生個體被推入 `animalsAddQueue` / `plantsAddQueue`，待當前階段迴圈結束後才合併至主向量。此設計可防止：
-- 迴圈執行中途的迭代器失效
-- 新生個體在誕生當回合即行動
-- 兩個實體生成至同一個格子（`isAvailable()` 檢查時亦涵蓋兩個佇列）
 
 ---
 
@@ -219,20 +167,23 @@ Current grass population:20
 3.  Exit
 ```
 
+### 圖例說明
+
 | 符號 | 實體 |
 |------|------|
 | `W` | 狼 |
 | `R` | 兔子 |
 | `G` | 草／植物 |
-| `.` | 空格 |<img width="573" height="750" alt="Screenshot 2026-06-03 010943" src="https://github.com/user-attachments/assets/2b6baa14-7e2c-4175-84db-b2db9cc7b668" />
+| `.` | 空格 |
+
 ### 狼與兔子的互動過程
 
 下圖展示狼（W）與兔子（R）在地圖中的互動情況。  
-在第一張圖中，狼與兔子位於相鄰或接近的位置；經過一回合更新後，狼會優先尋找附近的兔子並移動靠近，若位於同一格則會進行捕食。
+狼會在周邊地區捕獵。
 
 | 互動前 | 互動後 |
 |--------|--------|
-| <img width="573" height="750" alt="Screenshot 2026-06-03 010943" src="https://github.com/user-attachments/assets/2b6fc089-23c9-4a83-bd83-12a04026cb05" />| <img width="565" height="749" alt="Screenshot 2026-06-03 010956" src="https://github.com/user-attachments/assets/39087ec3-43fe-4666-82c0-5de23f0149c8" />|
+| <img width="286" height="345" alt="Screenshot 2026-06-03 010943" src="https://github.com/user-attachments/assets/2b6fc089-23c9-4a83-bd83-12a04026cb05" />| <img width="286" height="345" alt="Screenshot 2026-06-03 010956" src="https://github.com/user-attachments/assets/39087ec3-43fe-4666-82c0-5de23f0149c8" />|
 
 ## 🌱 植物生長與擴散展示
 
@@ -244,31 +195,8 @@ Current grass population:20
 
 | 互動前 | 互動後 |
 |-------------------|-------------------|
-|<img width="559" height="1052" alt="Screenshot 2026-06-03 011011" src="https://github.com/user-attachments/assets/8c02a9f8-c709-456a-81c0-5241170853f6" />| <img width="576" height="1041" alt="Screenshot 2026-06-03 011016" src="https://github.com/user-attachments/assets/1272de2a-23dd-4bd3-905f-a0dcc080db79" />|
+|<img width="286" height="530" alt="Screenshot 2026-06-03 011011" src="https://github.com/user-attachments/assets/8c02a9f8-c709-456a-81c0-5241170853f6" />| <img width="286" height="530" alt="Screenshot 2026-06-03 011016" src="https://github.com/user-attachments/assets/1272de2a-23dd-4bd3-905f-a0dcc080db79" />|
 
-### 圖例說明
-
-| 符號 | 代表 |
-|------|------|
-| `G` | Plant（植物） |
-| `R` | Rabbit（兔子） |
-| `W` | Wolf（狼） |
-| `.` | Empty Cell（空格） |
-
-**觀察結果：**
-- Plant Population：9 → 18
-- Rabbit Population：6 → 6
-- Wolf Population：10 → 10
-- 植物數量明顯增加，展示了系統中的植物擴散機制（Plant Spread Mechanism）。
-
-### 圖例說明
-
-| 符號 | 代表 |
-|------|------|
-| `W` | 狼 Wolf |
-| `R` | 兔子 Rabbit |
-| `G` | 草／植物 Grass |
-| `.` | 空格 Empty |
 
 此互動展示了系統中的捕食邏輯：狼會尋找附近的兔子，並在移動後進行獵食；兔子若被狼捕食，會從地圖中移除，同時狼會獲得能量。
 
@@ -276,23 +204,12 @@ Current grass population:20
 
 下圖展示兔子（R）透過進食植物獲得能量後進行繁殖的過程。
 
-在第 4 回合時，兔子數量為 **6 隻**，植物數量為 **16 株**，系統顯示 `Spawn rabbit at: 15,3`，表示有兔子成功繁殖。
-
 經過一回合更新後，第 5 回合的兔子數量增加至 **7 隻**，而植物數量下降至 **14 株**。這代表兔子透過啃食植物獲得能量，並在能量達到門檻後產生新的兔子。
 
 | 互動前 | 互動後 |
 |-------------------|-------------------|
-| <img width="576" height="1121" alt="Screenshot 2026-06-03 011037" src="https://github.com/user-attachments/assets/148f56f6-ff15-4380-81a0-a7908612e184" />|<img width="574" height="1049" alt="Screenshot 2026-06-03 011042" src="https://github.com/user-attachments/assets/7a81653c-09b9-446a-903a-edce27b50426" />|
+| <img width="286" height="555" alt="Screenshot 2026-06-03 011037" src="https://github.com/user-attachments/assets/148f56f6-ff15-4380-81a0-a7908612e184" />|<img width="286" height="555" alt="Screenshot 2026-06-03 011042" src="https://github.com/user-attachments/assets/7a81653c-09b9-446a-903a-edce27b50426" />|
 
-### 觀察結果
-
-| 項目 | 互動前 | 互動後 | 變化 |
-|------|----------|----------|------|
-| Wolf Population | 10 | 10 | 不變 |
-| Rabbit Population | 6 | 7 | +1 |
-| Grass Population | 16 | 14 | -2 |
-
-此結果展示了系統中的 **Rabbit Reproduction Mechanism（兔子繁殖機制）**，也說明植物作為兔子食物來源，會影響兔子的生存與繁殖。
 
 ## 展示的物件導向概念
 
@@ -313,3 +230,12 @@ Current grass population:20
 
 - **狼優先的回合偏差** — 每個回合狼始終在兔子之前行動，使捕食者獲得系統性優勢。若每輪隨機化行動順序，將產生更均衡的族群動態。
 - **`growCounter` 從不重置** — 植物蔓延後，其計數器持續累加。此後每回合都會嘗試蔓延，僅受鄰近格的可用性限制。
+
+---
+
+## 分工資訊
+
+| 姓名 | 開發內容 |
+|------|----------|
+| 范裴太愴 |  主要程式碼編輯,PPT| 
+| 馮家輝 | README |
