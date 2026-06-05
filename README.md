@@ -33,6 +33,7 @@
 - [遊玩方式](#遊玩方式)
 - [展示的物件導向概念](#展示的物件導向概念)
 - [已知問題](#已知問題)
+- [分工資訊](#分工資訊)
 
 ---
 
@@ -68,7 +69,8 @@ SurvivalWorldSimulation/
 ---
 
 ## UML圖
-<img width="1200" height="800" alt="Brainstorming and ideation" src="https://github.com/user-attachments/assets/5dafae5f-9871-46f2-a32f-782557a587db" />
+<img width="1689" height="1043" alt="UML" src="https://github.com/user-attachments/assets/a77aa119-9fce-4b42-beea-4bed813be07e" />
+
 
 ---
 
