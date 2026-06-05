@@ -133,6 +133,9 @@ clang++ -std=c++11 -o simulation \
 ## 遊玩方式
 
 ```
+Rule: The total number of organisms must not exceed 200.
+The life cycle of the world depends on the established population size of your organisms.
+
 Set the number of wolfs:          3
 Set the number of rabbits:        10
 Set the number of grass:          20
