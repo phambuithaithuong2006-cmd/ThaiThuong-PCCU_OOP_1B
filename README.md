@@ -68,13 +68,15 @@ SurvivalWorldSimulation/
 ---
 
 ## UML圖
-<img width="1500" height="1100" alt="Brainstorming and ideation" src="https://github.com/user-attachments/assets/5dafae5f-9871-46f2-a32f-782557a587db" />
+<img width="1200" height="800" alt="Brainstorming and ideation" src="https://github.com/user-attachments/assets/5dafae5f-9871-46f2-a32f-782557a587db" />
 
 ---
 
 ## 運作方式
 
 ### 回合順序（`World::update()` 內部）
+
+<img width="400" height="440" alt="Ảnh chụp màn hình 2026-06-04 175720" src="https://github.com/user-attachments/assets/08810ae7-2f21-4199-b70c-7baf9fddf78f" />
 
 每次呼叫 `update()` 皆依照以下固定順序執行：
 
@@ -185,6 +187,9 @@ Current grass population:20
 |--------|--------|
 | <img width="286" height="345" alt="Screenshot 2026-06-03 010943" src="https://github.com/user-attachments/assets/2b6fc089-23c9-4a83-bd83-12a04026cb05" />| <img width="286" height="345" alt="Screenshot 2026-06-03 010956" src="https://github.com/user-attachments/assets/39087ec3-43fe-4666-82c0-5de23f0149c8" />|
 
+### 程式碼
+<img width="664" height="682" alt="Ảnh chụp màn hình 2026-06-06 013743" src="https://github.com/user-attachments/assets/9333b217-6245-4355-a223-22093fb6fbc6" />
+
 ## 🌱 植物生長與擴散展示
 
 下圖展示植物（G）在模擬過程中的生長與擴散行為。
@@ -197,6 +202,9 @@ Current grass population:20
 |-------------------|-------------------|
 |<img width="286" height="530" alt="Screenshot 2026-06-03 011011" src="https://github.com/user-attachments/assets/8c02a9f8-c709-456a-81c0-5241170853f6" />| <img width="286" height="530" alt="Screenshot 2026-06-03 011016" src="https://github.com/user-attachments/assets/1272de2a-23dd-4bd3-905f-a0dcc080db79" />|
 
+### 程式碼
+
+<img width="467" height="452" alt="Ảnh chụp màn hình 2026-06-06 013952" src="https://github.com/user-attachments/assets/e280f2c3-6763-4df9-8c64-4d405288b240" />
 
 此互動展示了系統中的捕食邏輯：狼會尋找附近的兔子，並在移動後進行獵食；兔子若被狼捕食，會從地圖中移除，同時狼會獲得能量。
 
@@ -210,6 +218,9 @@ Current grass population:20
 |-------------------|-------------------|
 | <img width="286" height="555" alt="Screenshot 2026-06-03 011037" src="https://github.com/user-attachments/assets/148f56f6-ff15-4380-81a0-a7908612e184" />|<img width="286" height="555" alt="Screenshot 2026-06-03 011042" src="https://github.com/user-attachments/assets/7a81653c-09b9-446a-903a-edce27b50426" />|
 
+### 程式碼
+
+<img width="560" height="500" alt="Ảnh chụp màn hình 2026-06-06 013930" src="https://github.com/user-attachments/assets/7d8b8580-c7ce-4865-84a7-9a49a6f193d5" />
 
 ## 展示的物件導向概念
 
